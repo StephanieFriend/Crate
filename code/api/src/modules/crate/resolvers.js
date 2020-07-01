@@ -1,3 +1,6 @@
+// This file defines RESTful routes to follow (create, update, destroy)
+// and the methods necessary to take those defined actions
+
 // App Imports
 import models from '../../setup/models'
 import params from '../../config/params'

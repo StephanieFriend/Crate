@@ -1,3 +1,5 @@
+// Similar to Gemfile in RoR, defines all the gems, scripts, etc. that can be run
+
 {
   "name": "api",
   "version": "1.0.0",

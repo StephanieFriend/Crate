@@ -1,11 +1,11 @@
-// Imports
+// Imports the defined file
 import dotenv from 'dotenv'
 
-// Load .env
+//  Load .env after importing
 dotenv.config()
 
-// Environment
+// Defines the Environment
 export const NODE_ENV = process.env.NODE_ENV
 
-// Port
+// Sets the Port
 export const PORT = process.env.PORT || 8000

@@ -1,3 +1,6 @@
+// Looks to be similar to what an ActiveRecord query might do, dips into the database
+// and finds resource objects by ID, or resource type, etc.
+
 // Imports
 import { GraphQLInt, GraphQLString, GraphQLList } from 'graphql'
 

@@ -1,16 +1,17 @@
+// This file is the Seqeulize file that connects to the database
 {
   "development": {
-    "username": "postgres",
-    "password": null,
-    "database": "crate",
-    "host": "127.0.0.1",
-    "dialect": "postgres",
-    "seederStorage": "sequelize"
+    "username": "postgres", // name of user in the database
+    "password": null, // password for the database, set to null
+    "database": "crate", // defines the name of the database
+    "host": "127.0.0.1", // defines host localhost IPv4
+    "dialect": "postgres", // defines database language
+    "seederStorage": "sequelize" // stores seeds in format "sequelize" in database; could also use "json" here as well
   },
   "production": {
     "username": "postgres",
     "password": null,
-    "database": "crate",
+    "database": "crate", 
     "host": "127.0.0.1",
     "dialect": "postgres",
     "seederStorage": "sequelize"

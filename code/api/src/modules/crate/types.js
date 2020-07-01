@@ -1,3 +1,6 @@
+// This file will create a GraphQL object type based on database information,
+// and we can probably use this to display on the front end
+
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 

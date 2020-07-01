@@ -1,3 +1,6 @@
+// This file operates simiar to models in RoR, defines a resource and it's attributes
+// and defines relationships with other resources
+
 'use strict'
 
 module.exports = function(sequelize, DataTypes) {
