@@ -1,5 +1,5 @@
 // This file takes database information and "mutates" it using GraphQL
-// and it also follows what looks to be a RESTful routing pattern based on what
+// and it also follows what looks to be a ReSTful routing pattern based on what - index, show, create, update, new, edit, destroy
 // is occurring in the .resolvers file
 
 // Imports

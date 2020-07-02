@@ -8,7 +8,7 @@ import { GraphQLInt, GraphQLString, GraphQLList } from 'graphql'
 import CrateType from './types'
 import { getAll, getById } from './resolvers'
 
-// Crates All
+// Gets and returns all Crates in the database
 export const crates = {
   type: new GraphQLList(CrateType),
   args: {
@@ -17,7 +17,7 @@ export const crates = {
   resolve: getAll
 }
 
-// Crate By ID
+// Gets a specific crate by it's ID
 export const crateById = {
   type: CrateType,
   args: {

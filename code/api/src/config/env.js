@@ -1,4 +1,4 @@
-// Imports the defined file
+// Imports the defined file, this file keeps API keys, etc. secret
 import dotenv from 'dotenv'
 
 //  Load .env after importing
