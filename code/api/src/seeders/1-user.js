@@ -4,6 +4,8 @@ const bcrypt = require('bcrypt');
 const config = require('../config/server.json');
 const params = require('../config/params.json');
 
+// Creates seeds in the database; we will need to update the user with a style preference attribute
+// after attribute is added to User resource and schema
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('users', [

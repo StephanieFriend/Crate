@@ -7,6 +7,7 @@ import serverConfig from '../../config/server'
 import params from '../../config/params'
 import models from '../../setup/models'
 
+// May need a function here for 'Update', in order to update a User resource with a style preference
 // Create
 export async function create(parentValue, { name, email, password }) {
   // Users exists with same email check

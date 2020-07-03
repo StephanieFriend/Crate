@@ -5,7 +5,7 @@ import { GraphQLString, GraphQLInt } from 'graphql'
 import { UserType } from './types'
 import { create, remove } from './resolvers'
 
-// Create
+// Creates a user upon user signup, will need to add an attribute for style preference here
 export const userSignup = {
   type: UserType,
   args: {

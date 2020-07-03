@@ -1,4 +1,8 @@
+// This file manages the attributes of a User resource, we will neef to add a "style preference" attribute to this migration
+// in order to save the user's style preference to their particular resource.
+
 module.exports = {
+  // Sets table up
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('users', {
       id: {
@@ -29,6 +33,7 @@ module.exports = {
       }
     });
   },
+  // Tears table down
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('users');
   }

@@ -1,4 +1,5 @@
 // Defines attributes of Product and User resources in the database, possibly environmental parameters?
+
 {
   "product": {
     "types": {
