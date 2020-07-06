@@ -1,3 +1,5 @@
+// This is where the update function will be to update the style-preference along with the
+// calculation method to get the style type
 // Imports
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'

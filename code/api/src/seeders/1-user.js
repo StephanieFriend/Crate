@@ -1,3 +1,4 @@
+// update seeder with new column when created in migration
 'use strict';
 
 const bcrypt = require('bcrypt');

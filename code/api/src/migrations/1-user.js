@@ -1,3 +1,4 @@
+// add a column for a style-result
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('users', {

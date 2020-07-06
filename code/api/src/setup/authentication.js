@@ -6,6 +6,8 @@ import serverConfig from '../config/server.json'
 export default function (request, response, next) {
   let authToken = request.headers.authorization
 
+  // this is where the verification takes place
+  // although why wasn't just written as authToken in the if condition?
   if (authToken && authToken !== null) {
     try {
       const token = authToken.split(' ')

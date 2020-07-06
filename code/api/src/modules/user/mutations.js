@@ -1,3 +1,4 @@
+// Style-preference could possibly go in this file. Needs to start as nul, but update as a survey is taken
 // Imports
 import { GraphQLString, GraphQLInt } from 'graphql'
 

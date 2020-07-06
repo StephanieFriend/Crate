@@ -5,6 +5,7 @@ import { PORT, NODE_ENV } from '../config/env'
 export default function (server) {
   console.info('SETUP - Starting server..')
 
+// Retrieves the port from the .env file
   server.listen(PORT, (error) => {
     if (error) {
       console.error('ERROR - Unable to start server.')
