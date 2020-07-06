@@ -4,7 +4,7 @@ import React from 'react'
 // UI Imports
 import { level1 } from '../common/shadows'
 
-// Component
+// Component <Card children={}/>
 const Card = (props) => {
   const { children, ...other } = props
 

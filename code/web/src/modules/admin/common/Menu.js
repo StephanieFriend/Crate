@@ -11,6 +11,7 @@ import Menu from '../../common/header/Menu'
 import MenuItem from '../../common/header/MenuItem'
 
 // Component
+// Displays administer's menu with the crate dashboard, product list, and subscription list.
 const AdminMenu = () => (
   <Grid style={{ backgroundColor: grey }}>
     <GridCell style={{ padding: '2em', textAlign: 'center' }}>
