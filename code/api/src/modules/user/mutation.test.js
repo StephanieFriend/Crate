@@ -29,4 +29,14 @@ describe("user mutations", () => {
 
     expect(response.body.data.user.stylePreferences).toEqual(null)
   })
+
+  it('user update', async () => {
+    const response = await request(server)
+    .post('/')
+    .send({ query: [ '{ user(id: 1) { stylePreferences: classic } }' ]})
+    console.log(response.body)
+    .expect(201)
+
+    expect(response.body.data.user.stylePreferences).toEqual('classic')
+  })
 })
