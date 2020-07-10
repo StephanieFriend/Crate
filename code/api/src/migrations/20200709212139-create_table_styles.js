@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       range: {
-        type: Sequelize.ARRAY(Sequelize.INTEGER)
+        type: Sequelize.INTEGER
       }
     })
   },
