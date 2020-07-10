@@ -58,6 +58,16 @@ export async function login(parentValue, { email, password }) {
   }
 }
 
+// Update user
+export async function update(parentValue, { id, stylePreferences }) {
+    return await models.User.update(
+      {
+        stylePreferences
+      },
+      { where: { id } }
+    )
+}
+
 // Get by ID
 export async function getById(parentValue, { id }) {
   return await models.User.findOne({ where: { id } })
