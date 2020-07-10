@@ -24,7 +24,7 @@ describe("user mutations", () => {
   it('stylePreferences table column exists', async () => {
     const response = await request(server)
       .get('/')
-      .send({ query: '{ user(id: 1) { id name stylePreferences } }' })
+      .send({ query: '{ user(id: 2) { id name stylePreferences } }' })
       .expect(200)
 
     expect(response.body.data.user.stylePreferences).toEqual(null)
@@ -33,10 +33,10 @@ describe("user mutations", () => {
   it('user update', async () => {
     const response = await request(server)
     .post('/')
-    .send({ query: [ '{ user(id: 1) { stylePreferences: classic } }' ]})
+    .send({ query: 'mutation{ userUpdate(id: 1, stylePreferences: \"classic\"){ stylePreferences }}' })
+    .expect(200)
     console.log(response.body)
-    .expect(201)
 
-    expect(response.body.data.user.stylePreferences).toEqual('classic')
+    expect(response.body.data.userUpdate.stylePreferences).toEqual('classic')
   })
 })
