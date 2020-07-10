@@ -59,12 +59,12 @@ export async function login(parentValue, { email, password }) {
 }
 
 // Update user
-export async function update(parentValue, { id, stylePreferences }) {
-    return await models.User.update(
+export async function update(parentValue, { id, stylePreferences }, {}) {
+  const user = await models.User.findOne({ where: { id } })  
+  return await user.update(
       {
         stylePreferences
-      },
-      { where: { id } }
+      }
     )
 }
 
