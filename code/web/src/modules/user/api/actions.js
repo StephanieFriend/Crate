@@ -117,3 +117,41 @@ export function getGenders() {
     }))
   }
 }
+
+// Survey Results
+export function topsAnswer(answer) {
+  return {
+    type: 'TOPS_ANSWER',
+    payload: answer
+  }
+}
+
+export function bottomsAnswer(answer) {
+  return {
+    type: 'BOTTOMS_ANSWER',
+    payload: answer
+  }
+}
+
+export function shoesAnswer(answer) {
+  return {
+    type: 'SHOES_ANSWER',
+    payload: answer
+  }
+}
+
+export function accessoriesAnswer(answer) {
+  return {
+    type: 'ACCESSORIES_ANSWER',
+    payload: answer
+  }
+}
+
+// Computed Survey Results
+export function styleResult(result) {
+  return {
+    type: 'STYLE_RESULT',
+    payload: result
+  }
+}
+

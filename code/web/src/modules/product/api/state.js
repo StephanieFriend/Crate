@@ -11,7 +11,7 @@ import {
   PRODUCTS_GET_FAILURE,
   PRODUCTS_GET_RELATED_LIST_REQUEST,
   PRODUCTS_GET_RELATED_LIST_RESPONSE,
-  PRODUCTS_GET_RELATED_LIST_FAILURE
+  PRODUCTS_GET_RELATED_LIST_FAILURE,
 } from './actions'
 
 // Product list
@@ -137,4 +137,5 @@ export const productsRelated = (state = productsRelatedInitialState, action) => 
       return state
   }
 }
+
 

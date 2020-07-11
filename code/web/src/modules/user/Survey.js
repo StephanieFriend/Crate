@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { Link, withRouter } from 'react-router-dom'
+import { topsAnswer, bottomsAnswer, shoesAnswer, accessoriesAnswer, styleResult } from './api/actions';
 
 
 // UI Imports
@@ -28,24 +29,44 @@ class Survey extends PureComponent {
 
   constructor(props) {
     super(props)
-
-    this.state = {
-      survey: {
-        top: 0,
-        bottom: 0,
-        shoes: 0,
-        accessory: 0
-      }
-    }
   }
 
-  surveyClick = (event, location, number) => {
-    let survey = this.state.survey
-    survey[location] = number
-    console.log('survey', survey)
-    this.setState({
-      survey
-    })
+  computeStyle() {
+    const styleResponses = [this.props.topsResponse, this.props.bottomsResponse, this.props.shoesResponse, this.props.accessoriesResponse];
+    const styles = {
+      funkyFresh: 0,
+      classic: 0,
+      artsy: 0,
+      1: 'Funky Fresh',
+      2: 'Classic',
+      3: 'Artsy'
+    };
+
+    for (let i=0; i<4; i++){
+      if(styleResponses[i] === 1){
+        styles.funkyFresh++;
+      } else if(styleResponses[i] === 2){
+        styles.classic++;
+      } else {
+        styles.artsy++;
+      }
+    }
+
+    if(styles.funkyFresh >= 3) {
+      return this.props.styleResult(styles[1])
+    } else  if(styles.classic >= 3) {
+      return this.props.styleResult(styles[2])
+    } else if(styles.artsy >=3) {
+      return this.props.styleResult(styles[3])
+    } else {
+      const surveyTotal = styleResponses.reduce((total,style)=>{
+        total += style;
+        return total
+      },0);
+      const surveyAverage = surveyTotal/4;
+      const styleIndex = Math.round(surveyAverage);
+      return this.props.styleResult(styles[styleIndex])
+    }
   }
 
   render() {
@@ -68,10 +89,10 @@ class Survey extends PureComponent {
               </p>
               <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                 <Button
-                    onClick={(event) => this.surveyClick(event, 'top', '1')}  
+                    onClick={() => this.props.topsAnswer(1)}  
                     style={{ marginBottom: '1em' } } 
                     theme="primary">Style Choice 1
-                  </Button>
+                </Button>
               </p>
             </Card>
           </GridCell>
@@ -83,7 +104,7 @@ class Survey extends PureComponent {
               </p>
               <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                 <Button
-                  onClick={(event) => this.surveyClick(event, 'top', '2')}
+                  onClick={() => this.props.topsAnswer(2)}
                   style={{ marginBottom: '1em' }} 
                   theme="primary">Style Choice 2</Button>
               </p>
@@ -97,7 +118,7 @@ class Survey extends PureComponent {
               </p>
               <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                 <Button 
-                  onClick={(event) => this.surveyClick(event, 'top', '3')}
+                  onClick={() => this.props.topsAnswer(3)}
                   style={{ marginBottom: '1em' }} 
                   theme="primary">Style Choice 3
                 </Button>
@@ -117,7 +138,7 @@ class Survey extends PureComponent {
               </p>
               <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                 <Button 
-                  onClick={(event) => this.surveyClick(event, 'bottom', '1')}
+                  onClick={() => this.props.bottomsAnswer(1)}
                   style={{ marginBottom: '1em' }} 
                   theme="primary">Style Choice 1
                 </Button>
@@ -132,7 +153,7 @@ class Survey extends PureComponent {
               </p>
               <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                 <Button 
-                  onClick={(event) => this.surveyClick(event, 'bottom', '2')}
+                  onClick={() => this.props.bottomsAnswer(2)}
                   style={{ marginBottom: '1em' }} 
                   theme="primary">Style Choice 2
                 </Button>
@@ -147,7 +168,7 @@ class Survey extends PureComponent {
               </p>
               <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                 <Button 
-                  onClick={(event) => this.surveyClick(event, 'bottom', '3')}
+                  onClick={() => this.props.bottomsAnswer(3)}
                   style={{ marginBottom: '1em' }} 
                   theme="primary">Style Choice 3
                 </Button>
@@ -167,7 +188,7 @@ class Survey extends PureComponent {
               </p>
               <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                 <Button 
-                  onClick={(event) => this.surveyClick(event, 'shoes', '1')}
+                  onClick={() => this.props.shoesAnswer(1)}
                   style={{ marginBottom: '1em' }} 
                   theme="primary">Style Choice 1
                 </Button>
@@ -181,7 +202,7 @@ class Survey extends PureComponent {
               </p>
               <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                 <Button 
-                  onClick={(event) => this.surveyClick(event, 'shoes', '2')}
+                  onClick={() => this.props.shoesAnswer(2)}
                   style={{ marginBottom: '1em' }} 
                   theme="primary">Style Choice 2
                 </Button>
@@ -195,7 +216,7 @@ class Survey extends PureComponent {
               </p>
               <p style={{ textAlign: 'center' , marginTop: '1em', marginBottom: '1em' }}>
                 <Button 
-                  onClick={(event) => this.surveyClick(event, 'shoes', '3')}
+                  onClick={() => this.props.shoesAnswer(3)}
                   style={{ marginBottom: '1em' }} 
                   theme="primary">Style Choice 3
                 </Button>
@@ -215,7 +236,7 @@ class Survey extends PureComponent {
                 </p>
                 <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                   <Button 
-                    onClick={(event) => this.surveyClick(event, 'accessory', '1')}
+                    onClick={() => this.props.accessoriesAnswer(1)}
                     style={{ marginBottom: '1em' }} 
                     theme="primary">Style Choice 1
                   </Button>
@@ -230,7 +251,7 @@ class Survey extends PureComponent {
                 </p>
                 <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                   <Button 
-                    onClick={(event) => this.surveyClick(event, 'accessory', '2')}
+                    onClick={() => this.props.accessoriesAnswer(2)}
                     style={{ marginBottom: '1em' }} 
                     theme="primary">Style Choice 2
                   </Button>
@@ -245,17 +266,47 @@ class Survey extends PureComponent {
               </p>
               <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                 <Button
-                  onClick={(event) => this.surveyClick(event, 'accessory', '3')} 
+                  onClick={() => this.props.accessoriesAnswer(3)}
                   style={{ marginBottom: '1em' }} 
                   theme="primary">Style Choice 3
                 </Button>
               </p>
             </Card>
           </GridCell>
+          <Button
+            onClick={() => this.computeStyle()}
+            style={{ marginBottom: '1em' }} 
+            theme="primary">Get yo' style!
+          </Button>
+          <h6>{this.props.determinedStyle}</h6>
+
       </Grid>
     </div>
     )
   }
 }
 
-export default Survey;
+const mapStateToProps = state => {
+  return {
+    topsResponse: state.surveyReducer.topsAnswer,
+    bottomsResponse: state.surveyReducer.bottomsAnswer,
+    shoesResponse: state.surveyReducer.shoesAnswer,
+    accessoriesResponse: state.surveyReducer.accessoriesAnswer,
+    determinedStyle: state.surveyReducer.determinedStyle,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    topsAnswer: (answer) => dispatch(topsAnswer(answer)),
+    bottomsAnswer: (answer) => dispatch(bottomsAnswer(answer)),
+    shoesAnswer: (answer) => dispatch(shoesAnswer(answer)),
+    accessoriesAnswer: (answer) => dispatch(accessoriesAnswer(answer)),
+    styleResult: (result) => dispatch(styleResult(result))
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+  )(Survey)
