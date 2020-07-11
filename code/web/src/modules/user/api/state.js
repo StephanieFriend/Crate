@@ -84,6 +84,11 @@ export const surveyReducer = (state = surveyInitialState, action) => {
         ...state,
         determinedStyle: action.payload
       } 
+    case 'SAVED_SURVEY_RESULTS':
+      return {
+        ...state,
+        savedStyle: action.payload
+      }
     default:
       return state
   }

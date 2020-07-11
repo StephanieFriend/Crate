@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { Link, withRouter } from 'react-router-dom'
-import { topsAnswer, bottomsAnswer, shoesAnswer, accessoriesAnswer, styleResult } from './api/actions';
+import { topsAnswer, bottomsAnswer, shoesAnswer, accessoriesAnswer, styleResult, fetchStylePreference, setStylePreference } from './api/actions';
 
 
 // UI Imports
@@ -279,7 +279,17 @@ class Survey extends PureComponent {
             theme="primary">Get yo' style!
           </Button>
           <h6>{this.props.determinedStyle}</h6>
-
+          <Button
+            onClick={() => this.props.fetchStylePreference(2)}
+            style={{ marginBottom: '1em' }} 
+            theme="primary">Get Style for User 1
+          </Button>
+          <Button
+            onClick={() => this.props.setStylePreference('coolio',2)}
+            style={{ marginBottom: '1em' }} 
+            theme="primary">Post Style
+          </Button>
+          <h6>{this.props.savedStyle}</h6>
       </Grid>
     </div>
     )
@@ -293,6 +303,7 @@ const mapStateToProps = state => {
     shoesResponse: state.surveyReducer.shoesAnswer,
     accessoriesResponse: state.surveyReducer.accessoriesAnswer,
     determinedStyle: state.surveyReducer.determinedStyle,
+    savedStyle: state.surveyReducer.savedStyle,
   }
 }
 
@@ -302,7 +313,9 @@ const mapDispatchToProps = dispatch => {
     bottomsAnswer: (answer) => dispatch(bottomsAnswer(answer)),
     shoesAnswer: (answer) => dispatch(shoesAnswer(answer)),
     accessoriesAnswer: (answer) => dispatch(accessoriesAnswer(answer)),
-    styleResult: (result) => dispatch(styleResult(result))
+    styleResult: (result) => dispatch(styleResult(result)),
+    fetchStylePreference: (userId) => dispatch(fetchStylePreference(userId)),
+    setStylePreference: (style, userId) => dispatch(setStylePreference(style,userId)),
   }
 }
 

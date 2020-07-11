@@ -87,11 +87,12 @@ export function register(userDetails) {
   }
 }
 
+
 // Log out user and remove token from localStorage
 export function logout() {
   return dispatch => {
     logoutUnsetUserLocalStorageAndCookie()
-
+    
     dispatch({
       type: LOGOUT
     })
@@ -103,9 +104,41 @@ export function logoutUnsetUserLocalStorageAndCookie() {
   // Remove token
   window.localStorage.removeItem('token')
   window.localStorage.removeItem('user')
-
+  
   // Remove cookie
   cookie.remove('auth')
+}
+
+export function fetchStylePreference(userId) {
+  return dispatch => {
+    axios.post(routeApi, query({
+      operation: 'user',
+      variables: {id: userId},
+      fields: ['stylePreferences'],
+    }))
+      .then(response => {
+        console.log(response.data.data.user.stylePreferences)
+        return dispatch({
+          type: 'SAVED_SURVEY_RESULTS',
+          payload: response.data.data.user.stylePreferences,
+        })
+      })
+  }
+}
+
+export function setStylePreference(style,userId) {
+  return dispatch => {
+    axios.post(routeApi, mutation({
+      operation: 'userUpdate',
+      variables: {id: userId, stylePreferences: style}, 
+      fields: ['id','stylePreferences'],
+    }))
+      .then(response => {
+        if(response.status === 200){
+          dispatch(fetchStylePreference(userId))
+        }
+    })
+  }
 }
 
 // Get user gender
