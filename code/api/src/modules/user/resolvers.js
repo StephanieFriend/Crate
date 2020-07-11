@@ -73,6 +73,11 @@ export async function getById(parentValue, { id }) {
   return await models.User.findOne({ where: { id } })
 }
 
+// Get by Email
+export async function getByEmail(parentValue, { email }) {
+  return await models.User.findOne({ where: { email } })
+}
+
 // Get all
 export async function getAll() {
   return await models.User.findAll()

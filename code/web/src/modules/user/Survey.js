@@ -58,19 +58,23 @@ class Survey extends PureComponent {
     }
 
     if(styles.funkyFresh >= 3) {
-      return this.props.styleResult(styles[1])
+      this.props.styleResult(styles[1])
+      return this.props.setStylePreference(this.props.determinedStyle, this.props.userId, this.props.userEmail)
     } else  if(styles.classic >= 3) {
-      return this.props.styleResult(styles[2])
+        this.props.styleResult(styles[2])
+        return this.props.setStylePreference(this.props.determinedStyle, this.props.userId, this.props.userEmail)
     } else if(styles.artsy >=3) {
-      return this.props.styleResult(styles[3])
+        this.props.styleResult(styles[3])
+        return this.props.setStylePreference(this.props.determinedStyle, this.props.userId, this.props.userEmail)
     } else {
-      const surveyTotal = styleResponses.reduce((total,style)=>{
+      const surveyTotal = styleResponses.reduce((total,style)=> {
         total += style;
         return total
       },0);
       const surveyAverage = surveyTotal/4;
       const styleIndex = Math.round(surveyAverage);
-      return this.props.styleResult(styles[styleIndex])
+      this.props.styleResult(styles[styleIndex]);
+      this.props.setStylePreference(this.props.determinedStyle, this.props.userId, this.props.userEmail)
     }
   }
 
@@ -287,6 +291,8 @@ class Survey extends PureComponent {
                       style={{ marginBottom: '1em', marginTop: '1em' }} 
                       theme="primary">Get yo' style!
                     </Button>
+                    <h6>{this.props.determinedStyle}</h6>
+                    <h6>{this.props.userId}</h6>
                   </p>
               </div>
             </GridCell>
@@ -304,6 +310,8 @@ const mapStateToProps = state => {
     accessoriesResponse: state.surveyReducer.accessoriesAnswer,
     determinedStyle: state.surveyReducer.determinedStyle,
     savedStyle: state.surveyReducer.savedStyle,
+    userEmail: state.user.details.email,
+    userId: state.user.details.id,
   }
 }
 

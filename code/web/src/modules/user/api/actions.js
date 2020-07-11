@@ -36,7 +36,7 @@ export function login(userCredentials, isLoading = true) {
     return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,
-      fields: ['user {name, email, role}', 'token']
+      fields: ['user {name, email, role, id, stylePreferences}', 'token']
     }))
       .then(response => {
         let error = ''
@@ -109,32 +109,39 @@ export function logoutUnsetUserLocalStorageAndCookie() {
   cookie.remove('auth')
 }
 
-export function fetchStylePreference(userId) {
+export function fetchStylePreference(userEmail) {
   return dispatch => {
     axios.post(routeApi, query({
-      operation: 'user',
-      variables: {id: userId},
-      fields: ['stylePreferences'],
+      operation: 'byUserEmail',
+      variables: { email: userEmail },
+      fields: ['stylePreferences','id'],
     }))
       .then(response => {
+        console.log(response.data.data.byUserEmail.id)
         return dispatch({
           type: 'SAVED_SURVEY_RESULTS',
-          payload: response.data.data.user.stylePreferences,
+          payload: response.data.data.byUserEmail.stylePreferences
         })
       })
   }
 }
 
-export function setStylePreference(style,userId) {
-  return dispatch => {
-    axios.post(routeApi, mutation({
-      operation: 'userUpdate',
-      variables: {id: userId, stylePreferences: style}, 
-      fields: ['id','stylePreferences'],
-    }))
+export function setStylePreference(style,userId, userEmail) {
+  return (dispatch) => {
+    return axios.post(
+        routeApi, 
+        mutation({
+          operation: 'userUpdate',
+          variables: {id:userId, stylePreferences: style}, 
+          fields: ['id','stylePreferences'],
+        }))
       .then(response => {
+        console.log(response)
         if(response.status === 200){
-          dispatch(fetchStylePreference(userId))
+          dispatch({
+            type: 'SET_STYLE',
+            payload: style
+          })
         }
     })
   }
