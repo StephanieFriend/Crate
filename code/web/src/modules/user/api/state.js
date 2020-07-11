@@ -7,7 +7,8 @@ export const userInitialState = {
   error: null,
   isLoading: false,
   isAuthenticated: false,
-  details: null
+  details: null,
+  stylePreferences: '',
 }
 
 // State
@@ -42,6 +43,11 @@ export const user = (state = userInitialState, action) => {
         isAuthenticated: false,
         details: null
       }
+      case 'SET_STYLE':
+        return {
+          ...state,
+          stylePreferences: action.payload,
+        }
 
     default:
       return state
@@ -54,6 +60,7 @@ const surveyInitialState = {
   shoesAnswer: 0,
   accessoriesAnswer: 0,
   determinedStyle: '',
+  savedStyle: '',
 };
 
 // Survey Reducer
