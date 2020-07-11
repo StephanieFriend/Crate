@@ -7,6 +7,10 @@ import { Helmet } from 'react-helmet'
 import { Link, withRouter } from 'react-router-dom'
 import { topsAnswer, bottomsAnswer, shoesAnswer, accessoriesAnswer, styleResult, fetchStylePreference, setStylePreference } from './api/actions';
 
+import { routeImage, routes } from '../../setup/routes'
+import ImageTile from '../../ui/image/Tile'
+import { APP_URL } from '../../setup/config/env'
+
 
 // UI Imports
 import { Grid, GridCell } from '../../ui/grid'
@@ -72,7 +76,7 @@ class Survey extends PureComponent {
   render() {
     return (
       <div>
-        <Grid style={{ backgroundColor: grey }}>
+        <Grid style={{ backgroundColor: grey }} gutter={true}>
           <GridCell style={{ padding: '2em', textAlign: 'center' }}>
             <H3 font="secondary">Style Survey</H3>
           </GridCell>
@@ -85,12 +89,12 @@ class Survey extends PureComponent {
           <GridCell style={{ padding: '2em', textAlign: 'center' }}>
             <Card style={{ width: '18em', backgroundColor: white }}>
             <p style={{ padding: '2em 3em 0 3em' }}>
-              <img src={'http://placekitten.com/200/300'} style={{ width: '100%' }}/>
+              <ImageTile width={200} height={300} image={`${ APP_URL }/images/stock/Survey/artsy-top.jpg`} />
               </p>
               <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                 <Button
                     onClick={() => this.props.topsAnswer(1)}  
-                    style={{ marginBottom: '1em' } } 
+                    style={{ marginBottom: '1em', marginTop: '1em' } } 
                     theme="primary">Style Choice 1
                 </Button>
               </p>
@@ -100,12 +104,12 @@ class Survey extends PureComponent {
             <GridCell style={{ padding: '2em', textAlign: 'center' }}>
             <Card style={{ width: '18em', backgroundColor: white }}>
             <p style={{ padding: '2em 3em 0 3em' }}>
-              <img src={'http://placekitten.com/200/300'} style={{ width: '100%' }}/>
+              <ImageTile width={200} height={300} image={`${ APP_URL }/images/stock/Survey/classic-top.jpg`} />
               </p>
               <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                 <Button
                   onClick={() => this.props.topsAnswer(2)}
-                  style={{ marginBottom: '1em' }} 
+                  style={{ marginBottom: '1em', marginTop: '1em' }} 
                   theme="primary">Style Choice 2</Button>
               </p>
             </Card>
@@ -114,12 +118,12 @@ class Survey extends PureComponent {
           <GridCell style={{ padding: '2em', textAlign: 'center' }}>
             <Card style={{ width: '18em', backgroundColor: white }}>
             <p style={{ padding: '2em 3em 0 3em' }}>
-              <img src={'http://placekitten.com/200/300'} style={{ width: '100%' }}/>
+              <ImageTile width={200} height={300} image={`${ APP_URL }/images/stock/Survey/funky-top.jpg`} />
               </p>
               <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                 <Button 
                   onClick={() => this.props.topsAnswer(3)}
-                  style={{ marginBottom: '1em' }} 
+                  style={{ marginBottom: '1em', marginTop: '1em' }} 
                   theme="primary">Style Choice 3
                 </Button>
               </p>
@@ -134,12 +138,12 @@ class Survey extends PureComponent {
           <GridCell style={{ padding: '2em', textAlign: 'center' }}>
             <Card style={{ width: '18em', backgroundColor: white }}>
             <p style={{ padding: '2em 3em 0 3em' }}>
-              <img src={'http://placekitten.com/200/300'} style={{ width: '100%' }}/>
+              <ImageTile width={200} height={300} image={`${ APP_URL }/images/stock/Survey/artsy-bottom.jpg`} />
               </p>
               <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                 <Button 
                   onClick={() => this.props.bottomsAnswer(1)}
-                  style={{ marginBottom: '1em' }} 
+                  style={{ marginBottom: '1em', marginTop: '1em' }} 
                   theme="primary">Style Choice 1
                 </Button>
               </p>
@@ -149,12 +153,12 @@ class Survey extends PureComponent {
             <GridCell style={{ padding: '2em', textAlign: 'center' }}>
             <Card style={{ width: '18em', backgroundColor: white }}>
             <p style={{ padding: '2em 3em 0 3em' }}>
-              <img src={'http://placekitten.com/200/300'} style={{ width: '100%' }}/>
+              <ImageTile width={200} height={300} image={`${ APP_URL }/images/stock/Survey/classic-bottom.jpg`} />
               </p>
               <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                 <Button 
                   onClick={() => this.props.bottomsAnswer(2)}
-                  style={{ marginBottom: '1em' }} 
+                  style={{ marginBottom: '1em', marginTop: '1em' }} 
                   theme="primary">Style Choice 2
                 </Button>
               </p>
@@ -164,12 +168,12 @@ class Survey extends PureComponent {
           <GridCell style={{ padding: '2em', textAlign: 'center' }}>
             <Card style={{ width: '18em', backgroundColor: white }}>
             <p style={{ padding: '2em 3em 0 3em' }}>
-              <img src={'http://placekitten.com/200/300'} style={{ width: '100%' }}/>
+              <ImageTile width={200} height={300} image={`${ APP_URL }/images/stock/Survey/funky-bottom.jpg`} />
               </p>
               <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                 <Button 
                   onClick={() => this.props.bottomsAnswer(3)}
-                  style={{ marginBottom: '1em' }} 
+                  style={{ marginBottom: '1em', marginTop: '1em' }} 
                   theme="primary">Style Choice 3
                 </Button>
               </p>
@@ -184,12 +188,12 @@ class Survey extends PureComponent {
           <GridCell style={{ padding: '2em', textAlign: 'center' }}>
             <Card style={{ width: '18em', backgroundColor: white }}>
             <p style={{ padding: '2em 3em 0 3em' }}>
-              <img src={'http://placekitten.com/200/300'} style={{ width: '100%' }}/>
+              <ImageTile width={200} height={300} image={`${ APP_URL }/images/stock/Survey/verity-sanders-q4ExhrHaSLY-unsplash.jpg`} />
               </p>
               <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                 <Button 
                   onClick={() => this.props.shoesAnswer(1)}
-                  style={{ marginBottom: '1em' }} 
+                  style={{ marginBottom: '1em', marginTop: '1em' }} 
                   theme="primary">Style Choice 1
                 </Button>
               </p>
@@ -198,12 +202,12 @@ class Survey extends PureComponent {
             <GridCell style={{ padding: '2em', textAlign: 'center' }}>
             <Card style={{ width: '18em', backgroundColor: white }}>
             <p style={{ padding: '2em 3em 0 3em' }}>
-              <img src={'http://placekitten.com/200/300'} style={{ width: '100%' }}/>
+              <ImageTile width={200} height={300} image={`${ APP_URL }/images/stock/Survey/apostolos-vamvouras-YQbJLyY0hFU-unsplash.jpg`} />
               </p>
               <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                 <Button 
                   onClick={() => this.props.shoesAnswer(2)}
-                  style={{ marginBottom: '1em' }} 
+                  style={{ marginBottom: '1em', marginTop: '1em' }} 
                   theme="primary">Style Choice 2
                 </Button>
               </p>
@@ -212,12 +216,12 @@ class Survey extends PureComponent {
           <GridCell style={{ padding: '2em', textAlign: 'center' }}>
             <Card style={{ width: '18em', backgroundColor: white }}>
             <p style={{ padding: '2em 3em 0 3em' }}>
-              <img src={'http://placekitten.com/200/300'} style={{ width: '100%' }}/>
+              <ImageTile width={200} height={300} image={`${ APP_URL }/images/stock/Survey/irene-kredenets-dwKiHoqqxk8-unsplash.jpg`} />
               </p>
               <p style={{ textAlign: 'center' , marginTop: '1em', marginBottom: '1em' }}>
                 <Button 
                   onClick={() => this.props.shoesAnswer(3)}
-                  style={{ marginBottom: '1em' }} 
+                  style={{ marginBottom: '1em', marginTop: '1em' }} 
                   theme="primary">Style Choice 3
                 </Button>
               </p>
@@ -232,12 +236,12 @@ class Survey extends PureComponent {
             <GridCell style={{ padding: '2em', textAlign: 'center' }}>
               <Card style={{ width: '18em', backgroundColor: white }}>
               <p style={{ padding: '2em 3em 0 3em' }}>
-                <img src={'http://placekitten.com/200/300'} style={{ width: '100%' }}/>
+                <ImageTile width={200} height={300} image={`${ APP_URL }/images/stock/Survey/ArtsyAccessory.jpg`} />
                 </p>
                 <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                   <Button 
                     onClick={() => this.props.accessoriesAnswer(1)}
-                    style={{ marginBottom: '1em' }} 
+                    style={{ marginBottom: '1em', marginTop: '1em' }} 
                     theme="primary">Style Choice 1
                   </Button>
                 </p>
@@ -247,12 +251,12 @@ class Survey extends PureComponent {
             <GridCell style={{ padding: '2em', textAlign: 'center' }}>
               <Card style={{ width: '18em', backgroundColor: white }}>
               <p style={{ padding: '2em 3em 0 3em' }}>
-                <img src={'http://placekitten.com/200/300'} style={{ width: '100%' }}/>
+                <ImageTile width={200} height={300} image={`${ APP_URL }/images/stock/Survey/ClassicAccessory.jpeg`} />
                 </p>
                 <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                   <Button 
                     onClick={() => this.props.accessoriesAnswer(2)}
-                    style={{ marginBottom: '1em' }} 
+                    style={{ marginBottom: '1em', marginTop: '1em' }} 
                     theme="primary">Style Choice 2
                   </Button>
                 </p>
@@ -262,34 +266,29 @@ class Survey extends PureComponent {
           <GridCell style={{ padding: '2em', textAlign: 'center' }}>
             <Card style={{ width: '18em', backgroundColor: white }}>
             <p style={{ padding: '2em 3em 0 3em' }}>
-              <img src={'http://placekitten.com/200/300'} style={{ width: '100%' }}/>
+              <ImageTile width={200} height={300} image={`${ APP_URL }/images/stock/Survey/FunkyFreshAccessory.jpg`} />
               </p>
               <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
                 <Button
                   onClick={() => this.props.accessoriesAnswer(3)}
-                  style={{ marginBottom: '1em' }} 
+                  style={{ marginBottom: '1em', marginTop: '1em' }} 
                   theme="primary">Style Choice 3
                 </Button>
               </p>
             </Card>
           </GridCell>
-          <Button
-            onClick={() => this.computeStyle()}
-            style={{ marginBottom: '1em' }} 
-            theme="primary">Get yo' style!
-          </Button>
-          <h6>{this.props.determinedStyle}</h6>
-          <Button
-            onClick={() => this.props.fetchStylePreference(2)}
-            style={{ marginBottom: '1em' }} 
-            theme="primary">Get Style for User 1
-          </Button>
-          <Button
-            onClick={() => this.props.setStylePreference('coolio',2)}
-            style={{ marginBottom: '1em' }} 
-            theme="primary">Post Style
-          </Button>
-          <h6>{this.props.savedStyle}</h6>
+        
+            <GridCell>
+              <div>
+                  <p style={{ textAlign: 'center', marginTop: '1em', marginBottom: '1em' }}>
+                    <Button
+                      onClick={() => this.computeStyle()}
+                      style={{ marginBottom: '1em', marginTop: '1em' }} 
+                      theme="primary">Get yo' style!
+                    </Button>
+                  </p>
+              </div>
+            </GridCell>
       </Grid>
     </div>
     )
