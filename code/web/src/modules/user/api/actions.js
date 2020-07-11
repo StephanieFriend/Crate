@@ -117,7 +117,6 @@ export function fetchStylePreference(userId) {
       fields: ['stylePreferences'],
     }))
       .then(response => {
-        console.log(response.data.data.user.stylePreferences)
         return dispatch({
           type: 'SAVED_SURVEY_RESULTS',
           payload: response.data.data.user.stylePreferences,

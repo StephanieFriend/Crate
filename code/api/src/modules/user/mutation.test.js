@@ -35,7 +35,6 @@ describe("user mutations", () => {
     .post('/')
     .send({ query: 'mutation{ userUpdate(id: 1, stylePreferences: \"classic\"){ stylePreferences }}' })
     .expect(200)
-    console.log(response.body)
 
     expect(response.body.data.userUpdate.stylePreferences).toEqual('classic')
   })
